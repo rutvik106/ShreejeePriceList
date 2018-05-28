@@ -18,16 +18,17 @@ public class ProductListAdapter extends RecyclerView.Adapter {
 
     final Context context;
 
-    final List<ProductList> productLists;
+    List<ProductList> productLists;
 
     public ProductListAdapter(Context context) {
         this.context = context;
         productLists = new ArrayList<>();
     }
 
-    public void addProductList(ProductList list) {
+    public ProductList addProductList(ProductList list) {
         productLists.add(list);
         notifyItemInserted(productLists.size());
+        return list;
     }
 
     @NonNull
@@ -46,8 +47,9 @@ public class ProductListAdapter extends RecyclerView.Adapter {
         return productLists.size();
     }
 
-    public void clear() {
-        productLists.clear();
+    public void setData(List<ProductList> productList) {
+        this.productLists = productList;
         notifyDataSetChanged();
     }
+
 }
